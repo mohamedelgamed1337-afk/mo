@@ -6,6 +6,7 @@ import Products from "./pages/Products.jsx";
 
 export default function App() {
   return (
+    // test
     <Router>
       <Navbar />
       <Routes>
