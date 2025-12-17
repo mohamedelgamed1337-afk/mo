@@ -1,14 +1,29 @@
-export default function SignIn () {
-  return (
-    <div className="bg-white flex justify-center items-center min-h-screen">
-      <div className="shadow-xl p-6 bg-gray-300 w-96">
+import { useState } from "react";
 
-        <label className="text-3xl font-bold text-gray-800 block mb-6 justify-center item-center">
+
+
+export default function SignIn () {
+  const validation = /[d]{3,6}$/;
+  const [username, setUsername] = useState("");
+  function welcomingUser (e) {
+    setUsername (e.target.value.trim())
+  }
+  return (
+    <div className="bg-black flex justify-center items-center min-h-screen">
+      <div  className=" w-96">
+     <h1 className="text-yellow-300 text-3xl mb-6 whitespace-nowrap truncate">
+  {username && `Hi, ${username} 😃`}
+</h1>
+
+      <form className="shadow-xl p-6 bg-gray-300">
+
+        <label className="text-3xl font-bold text-gray-800 flex mb-6 justify-center item-center">
           Create Account
         </label>
 
         <label className="block text-semibold text-3xl">Username</label>
         <input
+        onChange={welcomingUser}
           type="text"
           placeholder="Username"
           className="w-full border rounded p-2 focus:ring-2 ring-blue-400 outline-none mb-2"
@@ -37,11 +52,11 @@ export default function SignIn () {
 
         <button
           type="submit"
-          className="border rounded w-full mt-4 bg-blue-500 hover:bg-blue-400 p-2 text-white"
+          className=" cursor-pointer border rounded w-full mt-4 bg-blue-500 hover:bg-blue-400 p-2 text-white"
         >
           Sign In
         </button>
-
+      </form>
       </div>
     </div>
   );
